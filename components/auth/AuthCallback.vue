@@ -40,7 +40,7 @@ onMounted(async () => {
     const state = params.get('state')
     const target = state || props.redirectPath || '/'
 
-    statusText = ref('登录成功，正在跳转...')
+    statusText.value = '登录成功，正在跳转...'
     window.location.href = target
   } catch (err) {
     if (err instanceof SSOError) {

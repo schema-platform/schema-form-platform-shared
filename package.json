@@ -1,5 +1,5 @@
 {
-  "name": "@schema-form/platform-shared",
+  "name": "@schema-platform/platform-shared",
   "version": "1.0.0",
   "private": false,
   "type": "module",
@@ -49,6 +49,10 @@
       "types": "./dist/utils/useAuth.d.ts",
       "import": "./dist/utils/useAuth.js"
     },
+    "./utils/useDataLoading": {
+      "types": "./dist/utils/useDataLoading.d.ts",
+      "import": "./dist/utils/useDataLoading.js"
+    },
     "./qiankun": {
       "types": "./dist/qiankun/index.d.ts",
       "import": "./dist/qiankun/index.js"
@@ -77,10 +81,6 @@
     "./config/element": {
       "types": "./dist/config/element.d.ts",
       "import": "./dist/config/element.js"
-    },
-    "./config/vite": {
-      "types": "./dist/config/vite.d.ts",
-      "import": "./dist/config/vite.js"
     }
   },
   "files": [
@@ -88,7 +88,7 @@
     "styles"
   ],
   "scripts": {
-    "build": "vue-tsc -b && vite build",
+    "build": "vite build",
     "test": "vitest run",
     "prepublishOnly": "npm run build"
   },
@@ -105,6 +105,7 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
+    "@types/node": "^26.0.1",
     "@vitejs/plugin-vue": "^5.2.3",
     "sass-embedded": "^1.100.0",
     "typescript": "~5.7.3",

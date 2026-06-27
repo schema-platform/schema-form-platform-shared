@@ -39,9 +39,12 @@ importers:
         specifier: ^4.5.0
         version: 4.6.4(vue@3.5.39(typescript@5.7.3))
     devDependencies:
+      '@types/node':
+        specifier: ^26.0.1
+        version: 26.0.1
       '@vitejs/plugin-vue':
         specifier: ^5.2.3
-        version: 5.2.4(vite@6.4.3(sass-embedded@1.100.0)(sass@1.100.0))(vue@3.5.39(typescript@5.7.3))
+        version: 5.2.4(vite@6.4.3(@types/node@26.0.1)(sass-embedded@1.100.0)(sass@1.100.0))(vue@3.5.39(typescript@5.7.3))
       sass-embedded:
         specifier: ^1.100.0
         version: 1.100.0
@@ -50,10 +53,10 @@ importers:
         version: 5.7.3
       vite:
         specifier: ^6.3.2
-        version: 6.4.3(sass-embedded@1.100.0)(sass@1.100.0)
+        version: 6.4.3(@types/node@26.0.1)(sass-embedded@1.100.0)(sass@1.100.0)
       vite-plugin-dts:
         specifier: ^5.0.3
-        version: 5.0.3(esbuild@0.25.12)(rollup@4.62.2)(typescript@5.7.3)(vite@6.4.3(sass-embedded@1.100.0)(sass@1.100.0))
+        version: 5.0.3(esbuild@0.25.12)(rollup@4.62.2)(typescript@5.7.3)(vite@6.4.3(@types/node@26.0.1)(sass-embedded@1.100.0)(sass@1.100.0))
       vue-tsc:
         specifier: ^2.2.0
         version: 2.2.12(typescript@5.7.3)
@@ -534,6 +537,9 @@ packages:
 
   '@types/lodash@4.17.24':
     resolution: {integrity: sha512-gIW7lQLZbue7lRSWEFql49QJJWThrTFFeIMJdp3eH4tKoxm1OvEPg02rm4wCCSHS0cL3/Fizimb35b7k8atwsQ==}
+
+  '@types/node@26.0.1':
+    resolution: {integrity: sha512-fc3KiUoBt6kie0N9bIW3E47vZsuaMf0PM2AaUpLCLT0s/LvX1nxAim6Fc049cNxODPpGm6qRAuUOB86SkRuPQw==}
 
   '@types/web-bluetooth@0.0.21':
     resolution: {integrity: sha512-oIQLCGWtcFZy2JW77j9k8nHzAOpqMHLQejDA48XXMWH6tjCQHz5RCFz1bzsmROyL6PUm+LLnUiI4BCn221inxA==}
@@ -1103,6 +1109,9 @@ packages:
   ufo@1.6.4:
     resolution: {integrity: sha512-JFNbkD1Svwe0KvGi8GOeLcP4kAWQ609twvCdcHxq1oSL8svv39ZuSvajcD8B+5D0eL4+s1Is2D/O6KN3qcTeRA==}
 
+  undici-types@8.3.0:
+    resolution: {integrity: sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ==}
+
   unplugin-dts@1.0.3:
     resolution: {integrity: sha512-/GR887wfG4r1cWyt1UZsLRuMIjsmEbGkS9yJrz+0dsToHAYUD5CTyP3JMGVLv25j9K0mJcwAVvZno/aTuSUvNg==}
     peerDependencies:
@@ -1549,11 +1558,15 @@ snapshots:
 
   '@types/lodash@4.17.24': {}
 
+  '@types/node@26.0.1':
+    dependencies:
+      undici-types: 8.3.0
+
   '@types/web-bluetooth@0.0.21': {}
 
-  '@vitejs/plugin-vue@5.2.4(vite@6.4.3(sass-embedded@1.100.0)(sass@1.100.0))(vue@3.5.39(typescript@5.7.3))':
+  '@vitejs/plugin-vue@5.2.4(vite@6.4.3(@types/node@26.0.1)(sass-embedded@1.100.0)(sass@1.100.0))(vue@3.5.39(typescript@5.7.3))':
     dependencies:
-      vite: 6.4.3(sass-embedded@1.100.0)(sass@1.100.0)
+      vite: 6.4.3(@types/node@26.0.1)(sass-embedded@1.100.0)(sass@1.100.0)
       vue: 3.5.39(typescript@5.7.3)
 
   '@volar/language-core@2.4.15':
@@ -2175,7 +2188,9 @@ snapshots:
 
   ufo@1.6.4: {}
 
-  unplugin-dts@1.0.3(esbuild@0.25.12)(rollup@4.62.2)(typescript@5.7.3)(vite@6.4.3(sass-embedded@1.100.0)(sass@1.100.0)):
+  undici-types@8.3.0: {}
+
+  unplugin-dts@1.0.3(esbuild@0.25.12)(rollup@4.62.2)(typescript@5.7.3)(vite@6.4.3(@types/node@26.0.1)(sass-embedded@1.100.0)(sass@1.100.0)):
     dependencies:
       '@rollup/pluginutils': 5.4.0(rollup@4.62.2)
       '@volar/typescript': 2.4.28
@@ -2189,7 +2204,7 @@ snapshots:
     optionalDependencies:
       esbuild: 0.25.12
       rollup: 4.62.2
-      vite: 6.4.3(sass-embedded@1.100.0)(sass@1.100.0)
+      vite: 6.4.3(@types/node@26.0.1)(sass-embedded@1.100.0)(sass@1.100.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -2202,12 +2217,12 @@ snapshots:
 
   varint@6.0.0: {}
 
-  vite-plugin-dts@5.0.3(esbuild@0.25.12)(rollup@4.62.2)(typescript@5.7.3)(vite@6.4.3(sass-embedded@1.100.0)(sass@1.100.0)):
+  vite-plugin-dts@5.0.3(esbuild@0.25.12)(rollup@4.62.2)(typescript@5.7.3)(vite@6.4.3(@types/node@26.0.1)(sass-embedded@1.100.0)(sass@1.100.0)):
     dependencies:
-      unplugin-dts: 1.0.3(esbuild@0.25.12)(rollup@4.62.2)(typescript@5.7.3)(vite@6.4.3(sass-embedded@1.100.0)(sass@1.100.0))
+      unplugin-dts: 1.0.3(esbuild@0.25.12)(rollup@4.62.2)(typescript@5.7.3)(vite@6.4.3(@types/node@26.0.1)(sass-embedded@1.100.0)(sass@1.100.0))
     optionalDependencies:
       rollup: 4.62.2
-      vite: 6.4.3(sass-embedded@1.100.0)(sass@1.100.0)
+      vite: 6.4.3(@types/node@26.0.1)(sass-embedded@1.100.0)(sass@1.100.0)
     transitivePeerDependencies:
       - '@rspack/core'
       - '@vue/language-core'
@@ -2217,7 +2232,7 @@ snapshots:
       - typescript
       - webpack
 
-  vite@6.4.3(sass-embedded@1.100.0)(sass@1.100.0):
+  vite@6.4.3(@types/node@26.0.1)(sass-embedded@1.100.0)(sass@1.100.0):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.4)
@@ -2226,6 +2241,7 @@ snapshots:
       rollup: 4.62.2
       tinyglobby: 0.2.17
     optionalDependencies:
+      '@types/node': 26.0.1
       fsevents: 2.3.3
       sass: 1.100.0
       sass-embedded: 1.100.0

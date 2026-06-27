@@ -9,3 +9,8 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv
 }
+
+// Qiankun 全局变量
+interface Window {
+  __POWERED_BY_QIANKUN__?: boolean
+}

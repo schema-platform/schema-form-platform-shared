@@ -6,6 +6,7 @@
 
 export { PostMessageBridge } from './PostMessageBridge'
 export { usePostMessage } from './usePostMessage'
+export type { UsePostMessageReturn } from './usePostMessage'
 export type {
   PostMessagePayload,
   PostMessageType,
@@ -14,5 +15,4 @@ export type {
   MessageHandler,
   PostMessageBridgeOptions,
   UsePostMessageOptions,
-  UsePostMessageReturn,
 } from './types'

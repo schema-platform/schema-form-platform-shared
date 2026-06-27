@@ -31,9 +31,9 @@ export interface AppConfig {
  */
 export const APP_CONFIGS: Record<AppName, AppConfig> = {
   shell:    { name: 'shell',    basePath: '/schema-platform/',              devPort: 5050 },
-  editor:   { name: 'editor',   basePath: '/schema-platform/micro/editor/', devPort: 5100 },
-  flow:     { name: 'flow',     basePath: '/schema-platform/micro/flow/',   devPort: 5200 },
-  ai:       { name: 'ai',       basePath: '/schema-platform/micro/ai/',     devPort: 5300 },
+  editor:   { name: 'editor',   basePath: '/schema-platform/child/editor/', devPort: 5100 },
+  flow:     { name: 'flow',     basePath: '/schema-platform/child/flow/',   devPort: 5200 },
+  ai:       { name: 'ai',       basePath: '/schema-platform/child/ai/',     devPort: 5300 },
 }
 
 /** API 服务端口 */

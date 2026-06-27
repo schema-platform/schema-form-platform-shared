@@ -10,6 +10,7 @@ export * from './utils/iconResolver'
 export * from './utils/message'
 export * from './utils/sso'
 export * from './utils/useAuth'
+export * from './utils/useDataLoading'
 export * from './utils/stores/index'
 
 // Qiankun
@@ -26,4 +27,3 @@ export * from './post-message/index'
 
 // Config
 export { setupElementPlus } from './config/element'
-export { createViteConfig } from './config/vite'
