@@ -1,0 +1,119 @@
+{
+  "name": "@schema-form/platform-shared",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components/*": {
+      "types": "./dist/components/*.d.ts",
+      "import": "./dist/components/*.js"
+    },
+    "./utils/apiClient": {
+      "types": "./dist/utils/apiClient.d.ts",
+      "import": "./dist/utils/apiClient.js"
+    },
+    "./utils/authTypes": {
+      "types": "./dist/utils/authTypes.d.ts",
+      "import": "./dist/utils/authTypes.js"
+    },
+    "./utils/form": {
+      "types": "./dist/utils/form.d.ts",
+      "import": "./dist/utils/form.js"
+    },
+    "./utils/iconResolver": {
+      "types": "./dist/utils/iconResolver.d.ts",
+      "import": "./dist/utils/iconResolver.js"
+    },
+    "./utils/message": {
+      "types": "./dist/utils/message.d.ts",
+      "import": "./dist/utils/message.js"
+    },
+    "./utils/sso": {
+      "types": "./dist/utils/sso.d.ts",
+      "import": "./dist/utils/sso.js"
+    },
+    "./utils/stores/*": {
+      "types": "./dist/utils/stores/*.d.ts",
+      "import": "./dist/utils/stores/*.js"
+    },
+    "./utils/useAuth": {
+      "types": "./dist/utils/useAuth.d.ts",
+      "import": "./dist/utils/useAuth.js"
+    },
+    "./qiankun": {
+      "types": "./dist/qiankun/index.d.ts",
+      "import": "./dist/qiankun/index.js"
+    },
+    "./qiankun/createQiankunApp": {
+      "types": "./dist/qiankun/createQiankunApp.d.ts",
+      "import": "./dist/qiankun/createQiankunApp.js"
+    },
+    "./qiankun/config": {
+      "types": "./dist/qiankun/config.d.ts",
+      "import": "./dist/qiankun/config.js"
+    },
+    "./socket": {
+      "types": "./dist/socket/index.d.ts",
+      "import": "./dist/socket/index.js"
+    },
+    "./post-message/*": {
+      "types": "./dist/post-message/*.d.ts",
+      "import": "./dist/post-message/*.js"
+    },
+    "./styles/theme.scss": "./styles/_theme.scss",
+    "./styles/css-variables.scss": "./styles/_css-variables.scss",
+    "./styles/variables.scss": "./styles/_variables.scss",
+    "./styles/tokens.css": "./styles/tokens.css",
+    "./styles/design-tokens.css": "./styles/design-tokens.css",
+    "./config/element": {
+      "types": "./dist/config/element.d.ts",
+      "import": "./dist/config/element.js"
+    },
+    "./config/vite": {
+      "types": "./dist/config/vite.d.ts",
+      "import": "./dist/config/vite.js"
+    }
+  },
+  "files": [
+    "dist",
+    "styles"
+  ],
+  "scripts": {
+    "build": "vue-tsc -b && vite build",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "@iconify-icons/ep": "^1.2.12",
+    "@iconify/vue": "^5.0.1",
+    "axios": "^1.7.9",
+    "element-plus": "^2.9.1",
+    "pinia": "^2.3.1",
+    "qiankun": "^2.10.16",
+    "socket.io-client": "^4.8.3",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "sass-embedded": "^1.100.0",
+    "typescript": "~5.7.3",
+    "vite": "^6.3.2",
+    "vite-plugin-dts": "^5.0.3",
+    "vue-tsc": "^2.2.0"
+  },
+  "peerDependencies": {
+    "element-plus": "^2.9.1",
+    "vue": "^3.5.13"
+  }
+}
