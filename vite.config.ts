@@ -8,8 +8,7 @@ export default defineConfig({
     vue(),
     dts({
       include: ['**/*.ts', '**/*.vue'],
-      outDir: './dist',
-      rollupTypes: false
+      outDirs: ['./dist']
     })
   ],
   resolve: {

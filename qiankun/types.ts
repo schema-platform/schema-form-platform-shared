@@ -12,7 +12,7 @@ export interface QiankunLifecycle {
 /** Qiankun 传递的 props */
 export interface QiankunProps {
   container?: HTMLElement
-  onGlobalStateChange?: (state: Record<string, unknown>, prev: Record<string, unknown>) => void
+  onGlobalStateChange?: (callback: (state: Record<string, unknown>, prev: Record<string, unknown>) => void, fireImmediately?: boolean) => void
   setGlobalState?: (state: Record<string, unknown>) => boolean
 }
 

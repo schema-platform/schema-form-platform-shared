@@ -52,6 +52,7 @@ export function useMicroApp(options: UseMicroAppOptions): UseMicroAppReturn {
   function resolveQuery(): Record<string, string> | undefined {
     if (!query) return undefined
     const q = typeof query === 'object' && 'value' in query ? query.value : query
+    if (typeof q === 'string') return undefined
     return Object.keys(q).length > 0 ? q : undefined
   }
 
