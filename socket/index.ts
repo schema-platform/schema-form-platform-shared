@@ -44,29 +44,25 @@ export function isConnected(): boolean {
   return connected
 }
 
-/**
- * 获取 Socket.IO 连接配置
- *
- * 开发环境：使用 /ws 路径（vite proxy 代理到 server）
- * 生产环境：使用 /schema-platform/ws 路径（nginx 重写为 /ws）
- */
-function getSocketConfig(): { url: string; path: string } {
-  if (typeof window === 'undefined') return { url: '', path: '' }
-
-  const isProd = import.meta.env?.PROD === true || import.meta.env?.MODE === 'production'
-  return {
-    url: window.location.origin,
-    path: isProd ? '/schema-platform/ws' : '/ws',
-  }
+export interface SocketConnectOptions {
+  /** 服务端地址，默认 window.location.origin */
+  url?: string
+  /** Socket.IO 路径，开发环境 /ws，生产环境 /schema-platform/ws */
+  path?: string
 }
 
 // ---- 公共 API ----
 
-/** 建立 Socket.IO 连接 */
-export function connect(): void {
+/**
+ * 建立 Socket.IO 连接
+ *
+ * @param opts - 可选配置，由调用方根据环境传入 url/path
+ */
+export function connect(opts?: SocketConnectOptions): void {
   if (socket) return
 
-  const { url, path } = getSocketConfig()
+  const url = opts?.url ?? (typeof window !== 'undefined' ? window.location.origin : '')
+  const path = opts?.path ?? '/ws'
   if (!url) return
 
   socket = io(url, {

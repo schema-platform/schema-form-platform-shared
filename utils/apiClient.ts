@@ -35,11 +35,15 @@ let tokenProvider: (() => string | null) | null = null
 let onUnauthorized: (() => void) | null = null
 
 export function setTokenProvider(provider: () => string | null): void {
-  tokenProvider = provider
+  if (!tokenProvider) {
+    tokenProvider = provider
+  }
 }
 
 export function setUnauthorizedHandler(handler: () => void): void {
-  onUnauthorized = handler
+  if (!onUnauthorized) {
+    onUnauthorized = handler
+  }
 }
 
 // ── axios 实例 ──
