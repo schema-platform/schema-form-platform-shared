@@ -5,7 +5,7 @@
  * - 请求拦截器：自动附加 Authorization header
  * - 响应拦截器：统一错误处理，401 触发 unauthorizedHandler
  */
-import axios, { type AxiosInstance, type AxiosResponse, type InternalAxiosRequestConfig } from 'axios'
+import axios, { type AxiosInstance, type AxiosResponse, type AxiosError, type InternalAxiosRequestConfig } from 'axios'
 
 export class ApiError extends Error {
   public readonly status: number
@@ -62,7 +62,7 @@ instance.interceptors.request.use(
     }
     return config
   },
-  (error) => Promise.reject(error),
+  (error: unknown) => Promise.reject(error),
 )
 
 // ── 响应拦截器：统一错误处理 ──
@@ -77,12 +77,13 @@ instance.interceptors.response.use(
     }
     return response
   },
-  (error) => {
-    if (axios.isAxiosError(error) && error.response) {
-      const { status, data } = error.response
+  (error: unknown) => {
+    const axiosError = error as AxiosError
+    if (axios.isAxiosError(axiosError) && axiosError.response) {
+      const { status, data } = axiosError.response
 
       // 401 清除认证状态并跳转登录页
-      if (status === 401 && error.config?.url !== '/auth/login') {
+      if (status === 401 && axiosError.config?.url !== '/auth/login') {
         onUnauthorized?.()
         // 根据当前路径判断应该跳转到哪个登录页
         const path = window.location.pathname
@@ -98,23 +99,23 @@ instance.interceptors.response.use(
         return Promise.reject(new ApiError('Authentication required', 401))
       }
 
-      const message = (data as ApiResponse<unknown>)?.error?.message ?? error.message
+      const message = (data as ApiResponse<unknown>)?.error?.message ?? (error instanceof Error ? error.message : 'Request failed')
       return Promise.reject(new ApiError(message, status))
     }
 
     // 网络错误等
-    return Promise.reject(new ApiError(error.message ?? 'Network error', 0))
+    return Promise.reject(new ApiError(error instanceof Error ? error.message : 'Network error', 0))
   },
 )
 
 // ── 对外 API ──
 
 export const apiClient = {
-  get: <T>(path: string) => instance.get<ApiResponse<T>>(path).then((r) => r.data.data as T),
-  post: <T>(path: string, body?: unknown) => instance.post<ApiResponse<T>>(path, body).then((r) => r.data.data as T),
-  put: <T>(path: string, body?: unknown) => instance.put<ApiResponse<T>>(path, body).then((r) => r.data.data as T),
-  patch: <T>(path: string, body?: unknown) => instance.patch<ApiResponse<T>>(path, body).then((r) => r.data.data as T),
-  delete: <T>(path: string) => instance.delete<ApiResponse<T>>(path).then((r) => r.data.data as T),
+  get: <T>(path: string) => instance.get<ApiResponse<T>>(path).then((r: AxiosResponse<ApiResponse<T>>) => r.data.data as T),
+  post: <T>(path: string, body?: unknown) => instance.post<ApiResponse<T>>(path, body).then((r: AxiosResponse<ApiResponse<T>>) => r.data.data as T),
+  put: <T>(path: string, body?: unknown) => instance.put<ApiResponse<T>>(path, body).then((r: AxiosResponse<ApiResponse<T>>) => r.data.data as T),
+  patch: <T>(path: string, body?: unknown) => instance.patch<ApiResponse<T>>(path, body).then((r: AxiosResponse<ApiResponse<T>>) => r.data.data as T),
+  delete: <T>(path: string) => instance.delete<ApiResponse<T>>(path).then((r: AxiosResponse<ApiResponse<T>>) => r.data.data as T),
 }
 
 export interface PaginatedResponse<T> {

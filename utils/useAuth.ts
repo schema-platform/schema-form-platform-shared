@@ -71,10 +71,10 @@ export function useAuth() {
     if (!rt) return
 
     try {
-      const res = await apiClient.post<{ accessToken: string; expiresIn: number }>('/auth/refresh', {
+      const res = await apiClient.post<{ accessToken: string; refreshToken?: string; expiresIn: number }>('/auth/refresh', {
         refreshToken: rt,
       })
-      store.setTokens(res.accessToken)
+      store.setTokens(res.accessToken, res.refreshToken)
       scheduleRefresh(res.expiresIn)
     } catch {
       // Refresh failed -- clear auth state, user must re-login
