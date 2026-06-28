@@ -1,6 +1,6 @@
 {
   "name": "@schema-platform/platform-shared",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "type": "module",
   "repository": "github:schema-platform/schema-form-platform-shared",

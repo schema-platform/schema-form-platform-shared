@@ -11,6 +11,11 @@ export default defineConfig({
       outDirs: ['./dist']
     })
   ],
+  css: {
+    preprocessorOptions: {
+      scss: { api: 'modern-compiler' },
+    },
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname)

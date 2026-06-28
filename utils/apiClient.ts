@@ -84,8 +84,17 @@ instance.interceptors.response.use(
       // 401 清除认证状态并跳转登录页
       if (status === 401 && error.config?.url !== '/auth/login') {
         onUnauthorized?.()
-        // 使用 shell basePath 确保跳转到正确的登录路径
-        window.location.href = '/schema-platform/login'
+        // 根据当前路径判断应该跳转到哪个登录页
+        const path = window.location.pathname
+        if (path.startsWith('/schema-platform/editor')) {
+          window.location.href = '/schema-platform/editor/login'
+        } else if (path.startsWith('/schema-platform/flow')) {
+          window.location.href = '/schema-platform/flow/login'
+        } else if (path.startsWith('/schema-platform/ai')) {
+          window.location.href = '/schema-platform/ai/login'
+        } else {
+          window.location.href = '/schema-platform/login'
+        }
         return Promise.reject(new ApiError('Authentication required', 401))
       }
 
