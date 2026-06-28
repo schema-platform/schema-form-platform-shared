@@ -30,10 +30,10 @@ export interface AppConfig {
  * 生产环境由 /api/micro-apps 接口驱动，此表不作为运行时数据源。
  */
 export const APP_CONFIGS: Record<AppName, AppConfig> = {
-  shell:    { name: 'shell',    basePath: '/schema-platform/',              devPort: 5050 },
-  editor:   { name: 'editor',   basePath: '/schema-platform/child/editor/', devPort: 5100 },
-  flow:     { name: 'flow',     basePath: '/schema-platform/child/flow/',   devPort: 5200 },
-  ai:       { name: 'ai',       basePath: '/schema-platform/child/ai/',     devPort: 5300 },
+  shell:    { name: 'shell',    basePath: '/schema-platform/',         devPort: 5050 },
+  editor:   { name: 'editor',   basePath: '/schema-platform/editor/',  devPort: 5100 },
+  flow:     { name: 'flow',     basePath: '/schema-platform/flow/',    devPort: 5200 },
+  ai:       { name: 'ai',       basePath: '/schema-platform/ai/',      devPort: 5300 },
 }
 
 /** API 服务端口 */
