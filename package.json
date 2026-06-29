@@ -1,6 +1,6 @@
 {
   "name": "@schema-platform/platform-shared",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "private": false,
   "type": "module",
   "repository": "github:schema-platform/schema-form-platform-shared",
@@ -54,6 +54,10 @@
     "./utils/useDataLoading": {
       "types": "./dist/utils/useDataLoading.d.ts",
       "import": "./dist/utils/useDataLoading.js"
+    },
+    "./utils/logger": {
+      "types": "./dist/utils/logger.d.ts",
+      "import": "./dist/utils/logger.js"
     },
     "./qiankun": {
       "types": "./dist/qiankun/index.d.ts",

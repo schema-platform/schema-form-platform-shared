@@ -47,24 +47,26 @@ export const API_PORT = 3001
  *
  * 用于 shell 从 /api/micro-apps 拿到 activeRule 后拼接 loadMicroApp 的 entry。
  *
- * @param activeRule 子应用激活规则（如 '/editor'、'/flow'）
+ * @param activeRule 子应用激活规则（如 '/editor'、'/flow'，支持数组）
  * @param isDev 是否为开发环境
  */
-export function buildMicroAppUrl(activeRule: string, isDev: boolean): string {
+export function buildMicroAppUrl(activeRule: string | string[], isDev: boolean): string {
+  const rule = Array.isArray(activeRule) ? activeRule[0] : activeRule
+
   // 从 APP_CONFIGS 查找匹配的 devPort
   const config = Object.values(APP_CONFIGS).find(c =>
-    c.basePath.includes(activeRule) || activeRule.includes(c.name),
+    c.basePath.includes(rule) || rule.includes(c.name),
   )
 
   if (isDev && config) {
-    return `http://localhost:${config.devPort}${activeRule}/`
+    return `http://localhost:${config.devPort}${rule}/`
   }
 
   if (typeof window !== 'undefined' && window.location) {
-    return `${window.location.origin}${activeRule}/`
+    return `${window.location.origin}${rule}/`
   }
 
-  return `${activeRule}/`
+  return `${rule}/`
 }
 
 /**
