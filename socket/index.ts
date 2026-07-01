@@ -188,9 +188,9 @@ export function emitChatCancel(): void {
 }
 
 /** 恢复 HITL 中断的对话 */
-export function emitChatResume(threadId: string, confirmed: boolean): void {
+export function emitChatResume(threadId: string, resumeValue: boolean | Record<string, unknown>): void {
   if (socket && connected) {
-    socket.emit('chat:resume', { threadId, confirmed })
+    socket.emit('chat:resume', { threadId, resumeValue })
   }
 }
 

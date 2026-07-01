@@ -5,6 +5,7 @@
  */
 
 export { useQiankun, initQiankunProps } from './useQiankun'
+export { useQiankunShell, initQiankunShellProps } from './useQiankunShell'
 export { useQiankunEvent, initQiankunLifecycle } from './useQiankunEvent'
 export { useMicroApp } from './useMicroApp'
 export { createQiankunApp } from './createQiankunApp'

@@ -10,7 +10,7 @@
 
 ### 职责范围
 - `components/` — AppDialog、AppIcon 等平台级公共组件
-- `utils/` — apiClient、config 等公共工具
+- `utils/` — apiClient、iconRegistry、iconResolver 等公共工具
 - `qiankun/` — 微前端集成工具
 - `post-message/` — 跨应用通信
 - `socket/` — WebSocket 工具
@@ -20,6 +20,12 @@
 - **零业务逻辑**：只包含平台级通用能力，不含任何具体业务逻辑
 - **API 客户端**：`utils/apiClient` 是所有前端应用统一的 HTTP 客户端
 - **组件隔离**：公共组件必须开启 CSS Module
+
+### 图标规则（AppIcon）
+- **唯一注册表**：`utils/iconRegistry.ts` 的 `ICON_MAP` 是 AppIcon 唯一合法图标来源，导出 `APP_ICON_NAMES` / `isRegisteredAppIcon()` 供校验
+- **禁止编造名称**：使用 AppIcon 时 `name` 必须已在 `ICON_MAP` 注册；开发模式下未注册名称会在控制台输出 `[AppIcon] 未注册的图标` 警告
+- **新增图标流程**：在 `@iconify-icons/ep` 确认图标存在 → 在 `iconRegistry.ts` import 并加入 `ICON_MAP` → workspace 链接验证 → 发包
+- **别名分层**：业务组件直接用注册名；外部/DB 图标名走 `iconResolver.resolveIconName()`，不在 AppIcon 内做别名解析
 
 ### 导出规范
 - 主入口：`./dist/index.js`

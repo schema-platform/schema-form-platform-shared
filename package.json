@@ -1,6 +1,6 @@
 {
   "name": "@schema-platform/platform-shared",
-  "version": "1.1.0",
+  "version": "1.1.4",
   "private": false,
   "type": "module",
   "repository": "github:schema-platform/schema-form-platform-shared",
@@ -34,6 +34,10 @@
     "./utils/iconResolver": {
       "types": "./dist/utils/iconResolver.d.ts",
       "import": "./dist/utils/iconResolver.js"
+    },
+    "./utils/iconRegistry": {
+      "types": "./dist/utils/iconRegistry.d.ts",
+      "import": "./dist/utils/iconRegistry.js"
     },
     "./utils/message": {
       "types": "./dist/utils/message.d.ts",
