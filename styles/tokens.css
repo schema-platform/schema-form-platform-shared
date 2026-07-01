@@ -113,7 +113,7 @@
 
   /* 节点专用阴影 */
   --shadow-node: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-node-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-node-hover: 0 6px 18px rgba(0, 0, 0, 0.16);
   --shadow-node-selected: 0 4px 16px rgba(0, 0, 0, 0.15);
 
   /* ---------- 尺寸系统 ---------- */
