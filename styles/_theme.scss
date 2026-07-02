@@ -49,6 +49,12 @@
   --el-component-size: #{$input-height};
   --el-component-size-small: 24px;
   --el-component-size-large: #{$button-height-lg};
+
+  // ---- 分页 ----
+  --el-pagination-button-height: #{$input-height};
+  --el-pagination-button-width: #{$input-height};
+  --el-pagination-button-height-small: 24px;
+  --el-pagination-button-width-small: 24px;
 }
 
 // ============================================================
@@ -325,5 +331,97 @@
 
   .el-input__inner {
     height: 32px;
+  }
+}
+
+// 默认尺寸 select / input 高度统一（工具栏、分页器等与按钮对齐）
+.el-select:not(.el-select--small):not(.el-select--large) {
+  .el-select__wrapper {
+    min-height: $input-height;
+    height: $input-height;
+    box-sizing: border-box;
+  }
+}
+
+.el-input:not(.el-input--small):not(.el-input--large) {
+  .el-input__wrapper {
+    min-height: $input-height;
+    box-sizing: border-box;
+  }
+
+  .el-input__inner {
+    height: $input-height;
+    line-height: $input-height;
+  }
+}
+
+// Pagination 分页 — total / sizes / pager / prev / next 统一高度
+.el-pagination {
+  align-items: center;
+
+  .el-pagination__total {
+    display: inline-flex;
+    align-items: center;
+    height: $input-height;
+    line-height: $input-height;
+  }
+
+  .el-pagination__sizes {
+    display: inline-flex;
+    align-items: center;
+    height: $input-height;
+
+    .el-select {
+      width: 128px;
+      height: $input-height;
+
+      .el-select__wrapper {
+        min-height: $input-height;
+        height: $input-height;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  .btn-prev,
+  .btn-next,
+  .el-pager li {
+    height: $input-height;
+    line-height: $input-height;
+    min-width: $input-height;
+    box-sizing: border-box;
+  }
+
+  .el-pagination__jump {
+    align-items: center;
+    height: $input-height;
+
+    .el-pagination__editor.el-input {
+      height: $input-height;
+      width: 56px;
+
+      .el-input__wrapper {
+        height: $input-height;
+        min-height: $input-height;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  &.el-pagination--small {
+    .el-pagination__total,
+    .el-pagination__sizes {
+      height: 24px;
+      line-height: 24px;
+    }
+
+    .el-pagination__sizes .el-select {
+      height: 24px;
+
+      .el-select__wrapper {
+        min-height: 24px;
+        height: 24px;
+      }
+    }
   }
 }

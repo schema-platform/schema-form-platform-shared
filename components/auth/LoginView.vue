@@ -167,93 +167,100 @@ function switchMode(newMode: ViewMode) {
   <div :class="styles['login-page']">
     <div :class="styles['login-card']">
       <div :class="styles['login-header']">
-        <h1 :class="styles['login-logo']">{{ title }}</h1>
+        <div :class="styles['login-brand']">
+          <div :class="styles['login-logo-icon']">S</div>
+          <h1 :class="styles['login-logo']">{{ title }}</h1>
+        </div>
         <p v-if="subtitle" :class="styles['login-subtitle']">{{ subtitle }}</p>
       </div>
 
-      <div v-if="errorMsg" :class="styles['login-alert'] + ' ' + styles['login-alert-error']">
-        {{ errorMsg }}
-      </div>
+      <el-alert
+        v-if="errorMsg"
+        :class="styles['login-alert']"
+        :title="errorMsg"
+        type="error"
+        show-icon
+        :closable="true"
+        @close="errorMsg = null"
+      />
 
-      <div v-if="successMsg" :class="styles['login-alert'] + ' ' + styles['login-alert-success']">
-        {{ successMsg }}
-      </div>
+      <el-alert
+        v-if="successMsg"
+        :class="styles['login-alert']"
+        :title="successMsg"
+        type="success"
+        show-icon
+        :closable="true"
+        @close="successMsg = null"
+      />
 
       <div :class="styles['login-form']">
-        <!-- 用户名（登录和注册都需要） -->
-        <input
+        <el-input
           v-if="mode !== 'changePassword'"
           v-model="form.username"
-          type="text"
           placeholder="用户名"
-          :class="styles['login-input']"
+          size="large"
           @keyup.enter="handleSubmit"
         />
 
-        <!-- 昵称（仅注册） -->
-        <input
+        <el-input
           v-if="mode === 'register'"
           v-model="form.nickname"
-          type="text"
           placeholder="昵称（选填）"
-          :class="styles['login-input']"
+          size="large"
         />
 
-        <!-- 手机号（仅注册） -->
-        <input
+        <el-input
           v-if="mode === 'register'"
           v-model="form.phone"
-          type="text"
           placeholder="手机号（选填）"
-          :class="styles['login-input']"
+          size="large"
         />
 
-        <!-- 旧密码（仅修改密码） -->
-        <input
+        <el-input
           v-if="mode === 'changePassword'"
           v-model="form.oldPassword"
-          type="password"
+          show-password
           placeholder="当前密码"
-          :class="styles['login-input']"
+          size="large"
           @keyup.enter="handleSubmit"
         />
 
-        <!-- 新密码 -->
-        <input
+        <el-input
           v-model="form.password"
-          type="password"
+          show-password
           :placeholder="mode === 'changePassword' ? '新密码' : '密码'"
-          :class="styles['login-input']"
+          size="large"
           @keyup.enter="handleSubmit"
         />
 
-        <!-- 确认密码（注册和修改密码） -->
-        <input
+        <el-input
           v-if="mode !== 'login'"
           v-model="form.confirmPassword"
-          type="password"
+          show-password
           placeholder="确认密码"
-          :class="styles['login-input']"
+          size="large"
           @keyup.enter="handleSubmit"
         />
 
-        <button
+        <el-button
+          type="primary"
+          size="large"
           :class="styles['login-button']"
-          :disabled="loading.login"
+          :loading="loading.login"
           @click="handleSubmit"
         >
-          {{ loading.login ? '处理中...' : (mode === 'register' ? '注册' : mode === 'changePassword' ? '修改密码' : '登录') }}
-        </button>
+          {{ mode === 'register' ? '注册' : mode === 'changePassword' ? '修改密码' : '登录' }}
+        </el-button>
       </div>
 
-      <!-- 底部链接 -->
       <div :class="styles['login-links']">
         <template v-if="mode === 'login'">
-          <a :class="styles['login-link']" @click="switchMode('register')">注册账号</a>
-          <a :class="styles['login-link']" @click="switchMode('changePassword')">修改密码</a>
+          <el-link type="primary" @click="switchMode('register')">注册账号</el-link>
+          <el-link type="primary" @click="switchMode('changePassword')">修改密码</el-link>
         </template>
         <template v-else>
-          <a :class="styles['login-link']" @click="switchMode('login')">返回登录</a>
+          <el-link type="primary" @click="switchMode('login')">返回登录</el-link>
         </template>
       </div>
     </div>

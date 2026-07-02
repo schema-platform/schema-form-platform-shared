@@ -100,6 +100,23 @@ import CaretBottom from '@iconify-icons/ep/caret-bottom'
 import Minus from '@iconify-icons/ep/minus'
 import Iphone from '@iconify-icons/ep/iphone'
 import Cellphone from '@iconify-icons/ep/cellphone'
+import OfficeBuilding from '@iconify-icons/ep/office-building'
+import Stamp from '@iconify-icons/ep/stamp'
+import Wallet from '@iconify-icons/ep/wallet'
+import Money from '@iconify-icons/ep/money'
+import ShoppingCart from '@iconify-icons/ep/shopping-cart'
+import CreditCard from '@iconify-icons/ep/credit-card'
+import Coin from '@iconify-icons/ep/coin'
+import Collection from '@iconify-icons/ep/collection'
+import Tools from '@iconify-icons/ep/tools'
+import DocumentChecked from '@iconify-icons/ep/document-checked'
+import Box from '@iconify-icons/ep/box'
+import AlarmClock from '@iconify-icons/ep/alarm-clock'
+import TakeawayBox from '@iconify-icons/ep/takeaway-box'
+import Coordinate from '@iconify-icons/ep/coordinate'
+import Postcard from '@iconify-icons/ep/postcard'
+import DataAnalysis from '@iconify-icons/ep/data-analysis'
+import Reading from '@iconify-icons/ep/reading'
 
 /** 图标名称 → Iconify 图标对象映射（AppIcon 唯一合法来源） */
 export const ICON_MAP: Record<string, IconifyIcon> = {
@@ -199,6 +216,23 @@ export const ICON_MAP: Record<string, IconifyIcon> = {
   minus: Minus,
   iphone: Iphone,
   cellphone: Cellphone,
+  'office-building': OfficeBuilding,
+  stamp: Stamp,
+  wallet: Wallet,
+  money: Money,
+  'shopping-cart': ShoppingCart,
+  'credit-card': CreditCard,
+  coin: Coin,
+  collection: Collection,
+  tools: Tools,
+  'document-checked': DocumentChecked,
+  box: Box,
+  'alarm-clock': AlarmClock,
+  'takeaway-box': TakeawayBox,
+  coordinate: Coordinate,
+  postcard: Postcard,
+  'data-analysis': DataAnalysis,
+  reading: Reading,
 }
 
 /** 已注册图标名称列表（kebab-case） */

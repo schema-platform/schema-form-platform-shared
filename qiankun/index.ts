@@ -5,7 +5,8 @@
  */
 
 export { useQiankun, initQiankunProps } from './useQiankun'
-export { useQiankunShell, initQiankunShellProps } from './useQiankunShell'
+export { useQiankunShell, initQiankunShellProps, resolveShellEmbedMode } from './useQiankunShell'
+export type { ShellEmbedMode } from './useQiankunShell'
 export { useQiankunEvent, initQiankunLifecycle } from './useQiankunEvent'
 export { useMicroApp } from './useMicroApp'
 export { createQiankunApp } from './createQiankunApp'
