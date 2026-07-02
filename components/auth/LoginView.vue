@@ -23,7 +23,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   title: 'Schema Form Platform',
-  subtitle: '基础平台',
+  subtitle: '',
 })
 
 const { login, loading } = useAuth()
@@ -168,7 +168,7 @@ function switchMode(newMode: ViewMode) {
     <div :class="styles['login-card']">
       <div :class="styles['login-header']">
         <h1 :class="styles['login-logo']">{{ title }}</h1>
-        <p :class="styles['login-subtitle']">{{ subtitle }}</p>
+        <p v-if="subtitle" :class="styles['login-subtitle']">{{ subtitle }}</p>
       </div>
 
       <div v-if="errorMsg" :class="styles['login-alert'] + ' ' + styles['login-alert-error']">
