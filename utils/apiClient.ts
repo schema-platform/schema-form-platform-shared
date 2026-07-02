@@ -6,6 +6,7 @@
  * - 响应拦截器：统一错误处理，401 触发 unauthorizedHandler
  */
 import axios, { type AxiosInstance, type AxiosResponse, type AxiosError, type InternalAxiosRequestConfig } from 'axios'
+import { isAuthLoginPath } from './authPaths.js'
 
 export class ApiError extends Error {
   public readonly status: number
@@ -86,19 +87,20 @@ instance.interceptors.response.use(
     if (axios.isAxiosError(axiosError) && axiosError.response) {
       const { status, data } = axiosError.response
 
-      // 401 清除认证状态并跳转登录页
+      // 401 清除认证状态；已在登录页时避免整页重载死循环
       if (status === 401 && axiosError.config?.url !== '/auth/login') {
         onUnauthorized?.()
-        // 根据当前路径判断应该跳转到哪个登录页
-        const path = window.location.pathname
-        if (path.startsWith('/schema-platform/editor')) {
-          window.location.href = '/schema-platform/editor/login'
-        } else if (path.startsWith('/schema-platform/flow')) {
-          window.location.href = '/schema-platform/flow/login'
-        } else if (path.startsWith('/schema-platform/ai')) {
-          window.location.href = '/schema-platform/ai/login'
-        } else {
-          window.location.href = '/schema-platform/login'
+        if (!isAuthLoginPath()) {
+          const path = window.location.pathname
+          if (path.startsWith('/schema-platform/editor')) {
+            window.location.href = '/schema-platform/editor/login'
+          } else if (path.startsWith('/schema-platform/flow')) {
+            window.location.href = '/schema-platform/flow/login'
+          } else if (path.startsWith('/schema-platform/ai')) {
+            window.location.href = '/schema-platform/ai/login'
+          } else {
+            window.location.href = '/schema-platform/login'
+          }
         }
         return Promise.reject(new ApiError('Authentication required', 401))
       }

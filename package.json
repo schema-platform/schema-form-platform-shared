@@ -55,6 +55,10 @@
       "types": "./dist/utils/useAuth.d.ts",
       "import": "./dist/utils/useAuth.js"
     },
+    "./utils/authPaths": {
+      "types": "./dist/utils/authPaths.d.ts",
+      "import": "./dist/utils/authPaths.js"
+    },
     "./utils/useDataLoading": {
       "types": "./dist/utils/useDataLoading.d.ts",
       "import": "./dist/utils/useDataLoading.js"
